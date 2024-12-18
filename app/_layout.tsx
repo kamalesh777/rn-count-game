@@ -27,6 +27,10 @@ export default function RootLayout() {
     ...FontAwesome.font,
   });
 
+  const [fontsLoaded] = useFonts({
+    antoutline: require("@ant-design/icons-react-native/fonts/antoutline.ttf"),
+  });
+
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
     if (error) throw error;
@@ -49,10 +53,11 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+        <Stack.Screen name="products" options={{ presentation: "modal" }} />
       </Stack>
     </ThemeProvider>
   );
